@@ -12,84 +12,130 @@ html {
 }
 
 body {
-    background: #eef4f9;
-    color: #1e293b;
+    background: #000000;
+    
     min-height: 100vh;
 }
 
 /* ===== NAVBAR ===== */
 
 header {
-    background: #7242be;
-    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.15);
+    position: fixed;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    width: min(800px, 92%);
+    background: rgba(114, 66, 190, 0.45);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 999px;
+    box-shadow: 0 2px 20px rgba(202, 155, 229, 0.822);
 }
 
 #navbar {
-    min-height: 75px;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 15px 30px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    position: relative;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 6px 16px;
 }
 
-#navbar h1 {
-    position: absolute;
-    left: 30px;
+/* Logo + nombre */
+.marca {
+    display: flex;
+    align-items: center;
+    gap: 8px;
     color: #f8fafc;
-    font-size: 25px;
-    letter-spacing: 0.5px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
 }
 
-#navbar ul {
+.marca svg {
+    width: 26px;
+    height: 26px;
+}
+
+.marca:hover {
+    color: #facc15;
+}
+
+/* Buscador */
+.buscador {
+    flex: 1;
+    max-width: 320px;
     display: flex;
     align-items: center;
-    gap: 15px;
-    list-style: none;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 999px;
+    padding: 2px 4px 2px 14px;
 }
 
-#navbar ul a {
-    display: block;
-    padding: 10px 18px;
-    color: #cbd5e1;
-    font-size: 16px;
-    text-decoration: none;
-    border-radius: 8px;
-    transition: background 0.3s, color 0.3s;
+.buscador input {
+    flex: 1;
+    min-width: 0;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-size: 14px;
+    padding: 6px 0;
 }
 
-#navbar h1:hover{
-    color: #0f172a;
-    transform: scale(1.09);
-
+.buscador input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
 }
 
-#navbar ul a:hover {
-    background: #cccdcf;
-    color: rgb(233, 51, 240);
+.buscador button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    padding: 4px 8px;
+    border-radius: 999px;
+    transition: background 0.3s;
+}
+
+.buscador button:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+/* Botones de la derecha */
+.acciones {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.acciones button {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.acciones button:hover {
+    background: rgba(255, 255, 255, 0.35);
     transform: scale(1.05);
 }
 
-#navbar > a {
-    position: absolute;
-    right: 30px;
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
-    align-items: center;
-}
-
-#navbar img {
+.acciones img {
     display: block;
-    width: 35px;
-    height: 35px;
+    width: 28px;
+    height: 28px;
     object-fit: contain;
+    border-radius: 50%;
     transition: transform 0.3s;
 }
 
-#navbar img:hover {
+.acciones img:hover {
     transform: scale(1.12);
 }
 
@@ -100,23 +146,33 @@ main {
     max-width: 1100px;
     margin: 50px auto;
 }
-
 /* ===== HERO ===== */
 
 #hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    margin-bottom: 35px;
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.7)),
+        url("https://images.unsplash.com/photo-1597200381847-30ec200eeb9a?q=80&w=1074&auto=format&fit=crop") center / cover no-repeat;
 }
 
-#hero h2 {
-    font-size: clamp(30px, 5vw, 45px);
-    color: #0f172a;
-    margin-bottom: 12px;
+.hero-contenido {
+    width: min(900px, 90%);
+    padding: 0 20px;
+}
+
+#hero h1 {
+    font-size: clamp(36px, 6vw, 64px);
+    color: #fff;
+    margin-bottom: 14px;
 }
 
 #hero p {
-    font-size: 17px;
-    color: #64748b;
+    font-size: 18px;
+    color: #e2e8f0;
     line-height: 1.6;
 }
 
@@ -129,77 +185,45 @@ main {
 }
 
 #img a {
-    display: block;
-    width: 100%;
-    max-width: 750px;
-    overflow: hidden;
     border-radius: 18px;
     box-shadow: 0 12px 30px rgba(15, 23, 42, 0.15);
 }
 
-#img img {
-    display: block;
-    width: 100%;
-    max-height: 380px;
-    object-fit: cover;
-    transition: transform 0.5s;
-}
 
-#img a:hover img {
-    transform: scale(1.04);
-}
 
 /* ===== BUSCADOR DEL CLIMA ===== */
 
 #navegacion {
     max-width: 650px;
+    min-height: 60vh;
     margin: 0 auto 50px;
     padding: 30px;
-    background: white;
+    background: rgba(255, 255, 255, 0.616);
     border: 1px solid #e2e8f0;
     border-radius: 18px;
     box-shadow: 0 8px 25px rgba(15, 23, 42, 0.06);
     text-align: center;
+    scroll-margin-top: 100px; /* deja espacio para que el navbar no tape la tarjeta */
 }
 
-#navegacion p {
-    font-size: 20px;
-    font-weight: 600;
-    margin-bottom: 20px;
+/* Buscador dentro de los resultados */
+.buscador-resultado {
+    max-width: 420px;
+    margin: 0 auto 24px;
+    background: #747575;
+    border: 1px solid #e2e8f0;
+}
+
+.buscador-resultado input {
     color: #1e293b;
 }
 
-#navegacion input {
-    width: 70%;
-    padding: 13px 15px;
-    border: 1px solid #cbd5e1;
-    border-radius: 9px;
-    outline: none;
-    font-size: 16px;
-    transition: border 0.3s, box-shadow 0.3s;
+.buscador-resultado input::placeholder {
+    color: #94a3b8;
 }
 
-#navegacion input:focus {
-    border-color: #3b82f6;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
-}
-
-#navegacion button {
-    padding: 13px 20px;
-    margin-left: 5px;
-    background: #2563eb;
-    color: white;
-    border: none;
-    border-radius: 9px;
-    font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.3s, transform 0.2s;
-}
-
-#navegacion button:hover {
-    background: #1d4ed8;
-    transform: translateY(-2px);
+.buscador-resultado button:hover {
+    background: #8298b4;
 }
 
 /* ===== Clima ===== */
@@ -219,7 +243,7 @@ main {
   gap: 4px;
   padding: 12px;
   border-radius: 10px;
-  background: #f0f4f8;
+  background: #737577;
   min-width: 70px;
 }
 
@@ -263,12 +287,15 @@ footer h3 {
 /* ===== DISEÑO RESPONSIVE ===== */
 
 @media (max-width: 600px) {
-    #navbar {
-        padding: 15px;
-        min-height: 110px;
-        flex-direction: column;
-        gap: 10px;
-    }
+#navbar {
+    gap: 10px;
+    padding: 6px 10px;
+}
+
+#navbar ul a {
+    padding: 8px 12px;
+    font-size: 14px;
+}
 
     #navbar h1 {
         position: static;
@@ -279,9 +306,6 @@ footer h3 {
         gap: 5px;
     }
 
-    #navbar ul a {
-        padding: 8px 12px;
-    }
 
     #navbar > a {
         top: 15px;
